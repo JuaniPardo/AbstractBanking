@@ -2,19 +2,32 @@ package bank;
 
 import java.util.Calendar;
 
-public class AbstractBankingMain {
+public class SingletonBankingMain {
 
     public static void main(String[] args) {
-        Bank bank = new Bank();
+        Bank bank = Bank.getInstance();
+
+        //Testeo la clase Bank
+        Bank bank2 = Bank.getInstance();
+
+
+
         initializeCustomers(bank);
 
         // run the customer report
         CustomerReport report = new CustomerReport();
         report.setBank(bank);
         report.generateReport();
+
+
+        //Testeo la clase Bank
+        System.out.println("\n\nTesteo la clase Bank:");
+        if (bank == bank2) {
+            System.out.println("Son iguales");
+        } else {
+            System.out.println("Son distintos");
+        }
     }
-
-
 
     /**
      * The initializeCustomers function adds customers to the bank.
@@ -24,7 +37,6 @@ public class AbstractBankingMain {
     private static void initializeCustomers(Bank bank) {
         Customer customer;
 
-        //TODO 1: Update Calendar to use LocalDate
         //180 day term
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_YEAR, 180);

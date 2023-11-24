@@ -1,8 +1,5 @@
 package bank;
 
-import javax.management.ConstructorParameters;
-import java.beans.ConstructorProperties;
-
 public abstract class Account {
     protected double balance;
 

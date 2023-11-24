@@ -1,6 +1,7 @@
 package bank;
 
 public class Bank {
+    private static final Bank instance = new Bank();
     private Customer[] customers;
     private int numberOfCustomers;
 
@@ -10,11 +11,14 @@ public class Bank {
      * It initializes the customers array to hold 10 customers and the numberOfCustomers variable to 0.
      * </p>
      */
-    public Bank() {
+    private Bank() {
         customers = new Customer[10];
         numberOfCustomers = 0;
     }
 
+    public static Bank getInstance() {
+        return instance;
+    }
     /**
      * @param f First Name
      * @param l Last Name

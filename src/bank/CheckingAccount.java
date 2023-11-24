@@ -1,16 +1,16 @@
 package bank;
 
 public class CheckingAccount extends Account{
-    private double overdraftLimit;
+    private final double OVERDRAFT_LIMIT;
 
     /**
      * {@code Constructor}
      * @param balance
-     * @param overdraftLimit
+     * @param OVERDRAFT_LIMIT
      */
-    public CheckingAccount(double balance, double overdraftLimit) {
+    public CheckingAccount(double balance, double OVERDRAFT_LIMIT) {
         super(balance);
-        this.overdraftLimit = overdraftLimit;
+        this.OVERDRAFT_LIMIT = OVERDRAFT_LIMIT;
     }
 
     /**
@@ -23,7 +23,7 @@ public class CheckingAccount extends Account{
 
     @Override
     public boolean withdraw(double amount) {
-        if (amount <= balance + overdraftLimit) {
+        if (amount <= balance + OVERDRAFT_LIMIT) {
             balance -= amount;
             return true;
         } else {
